@@ -1,8 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER Jeff Geerling
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        software-properties-common \
