@@ -19,3 +19,6 @@ RUN apt-add-repository -y ppa:ansible/ansible \
 
 # Install Ansible inventory file
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+
+# Workaround for pleaserun tool that Logstash uses
+RUN rm -rf /sbin/initctl && ln -s /sbin/initctl.distrib /sbin/initctl
