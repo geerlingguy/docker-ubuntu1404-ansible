@@ -8,6 +8,16 @@ RUN apt-get update \
     && rm -Rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
+
+# Upgrade Python.
+RUN add-apt-repository ppa:jonathonf/python-2.7 \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+       python2.7 \
+    && rm -Rf /var/lib/apt/lists/* \
+    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+    && apt-get clean
+
 # Install Ansible.
 RUN apt-add-repository -y ppa:ansible/ansible \
     && apt-get update \
