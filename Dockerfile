@@ -11,16 +11,15 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        python2.7 \
+    && ln -s /usr/bin/python2.7 /usr/bin/python \
     && rm -Rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
 
-# Install Pip.
-ADD https://bootstrap.pypa.io/get-pip.py .
-RUN /usr/bin/python2.7 get-pip.py
-
 # Install Ansible via Pip.
-RUN pip install $pip_packages
+ADD https://bootstrap.pypa.io/get-pip.py .
+RUN /usr/bin/python2.7 get-pip.py \
+  && pip install $pip_packages
 
 # Install Ansible inventory file.
 RUN mkdir -p /etc/ansible
