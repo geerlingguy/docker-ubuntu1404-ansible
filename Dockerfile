@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 LABEL maintainer="Jeff Geerling"
 
-ENV pip_packages "ansible"
+ENV pip_packages "ansible yamllint ansible-lint flake8 testinfra molecule"
 
 # Install dependencies and upgrade Python.
 RUN apt-get update \
@@ -11,7 +11,8 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        python2.7 \
-    && ln -s /usr/bin/python2.7 /usr/bin/python \
+       build-essential \
+       python-dev \
     && rm -Rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
