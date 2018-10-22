@@ -15,15 +15,6 @@ RUN apt-get update \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
 
-# Upgrade Python.
-RUN add-apt-repository ppa:jonathonf/python-2.7 \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-       python2.7 \
-    && rm -Rf /var/lib/apt/lists/* \
-    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
-    && apt-get clean
-
 # Install Pip.
 ADD https://bootstrap.pypa.io/get-pip.py .
 RUN /usr/bin/python2.7 get-pip.py
