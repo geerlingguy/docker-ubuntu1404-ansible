@@ -7,7 +7,7 @@ ENV pip_packages "ansible"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        software-properties-common \
-    && add-apt-repository ppa:jonathonf/python-2.7 \
+    && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        python2.7 \
